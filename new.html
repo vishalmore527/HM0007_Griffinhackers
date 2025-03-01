@@ -11,65 +11,81 @@
             padding: 0;
             background-color: #f4f4f4;
         }
-        header {
-            background-color: #4CAF50;
+        .header {
+            background-color: #28a745;
             color: white;
-            padding: 1em;
+            padding: 15px;
             text-align: center;
+            font-size: 24px;
+            font-weight: bold;
         }
-        nav {
+        .nav {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             background-color: #333;
         }
-        nav a {
+        .nav a {
             color: white;
             padding: 14px 20px;
             text-decoration: none;
             text-align: center;
         }
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
+        .nav a:hover {
+            background-color: #575757;
         }
         .container {
-            padding: 20px;
+            margin: 20px;
         }
         .card {
             background-color: white;
             padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            color: white;
+            background-color: #28a745;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Student Platform</h1>
-    </header>
-    <nav>
-        <a href="#progress">Progress</a>
-        <a href="#lessons">Lessons</a>
-        <a href="#quizzes">Quizzes</a>
-        <a href="#matchmaking">Matchmaking</a>
-    </nav>
+    <div class="header">Student Platform</div>
+    <div class="nav">
+        <a href="progress.html">Progress</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="quizzes.html">Quizzes</a>
+        <a href="matchmaking.html">Matchmaking</a>
+    </div>
     <div class="container">
-        <section id="progress" class="card">
+        <div class="card">
             <h2>Track Progress</h2>
             <p>View your progress and achievements.</p>
-        </section>
-        <section id="lessons" class="card">
+            <a href="progress.html" class="btn">Go to Progress</a>
+        </div>
+        <div class="card">
             <h2>Lessons</h2>
             <p>Engage with interactive lessons.</p>
-        </section>
-        <section id="quizzes" class="card">
+            <a href="file:///C:/Users/Vishal/OneDrive/Desktop/git/lessons1.html" class="btn">Go to Lessons</a>
+        </div>
+        <div class="card">
             <h2>Quizzes</h2>
-            <p>Take quizzes to test your knowledge.</p>
-        </section>
-        <section id="matchmaking" class="card">
-            <h2>Global Matchmaking</h2>
-            <p>Compete with peers in concept-based quiz competitions.</p>
-        </section>
+            <p>Test your knowledge with quizzes.</p>
+            <a href="file:///C:/Users/Vishal/OneDrive/Desktop/git/qu.html" class="btn">Go to Quizzes</a>
+        </div>
+        <div class="card">
+            <h2>Matchmaking</h2>
+            <p>Find study partners with similar goals.</p>
+            <a href="matchmaking.html" class="btn">Go to Matchmaking</a>
+        </div>
     </div>
 </body>
 </html>

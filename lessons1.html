@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studify - Student Learning & Mentorship Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            max-width: 800px;
+            margin: auto;
+        }
+        .header {
+            text-align: center;
+            font-family: 'Georgia', serif;
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            margin-top: 50px;
+            color: #2C3E50;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: block;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .progress {
+            width: 100%;
+            height: 20px;
+            background: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background: #4CAF50;
+            width: 0%;
+            transition: width 0.5s ease-in-out;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #95C8D8;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background: #7AB3D8;
+        }
+        .subject {
+            font-weight: bold;
+            color: black;
+            font-size: 18px;
+        }
+        #module-info {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+    </style>
+    <script>
+        function updateProgress() {
+            let progressBar = document.getElementById("progress-bar");
+            let progressText = document.getElementById("progress-text");
+            let creditsText = document.getElementById("credits");
+            
+            let currentCredits = parseInt(creditsText.innerText);
+            let progress = Math.min((currentCredits / 100) * 100, 100);
+            progressBar.style.width = progress + "%";
+            progressText.innerText = progress + "% completed";
+        }
+
+        function completeModule() {
+            let creditsText = document.getElementById("credits");
+            let currentCredits = parseInt(creditsText.innerText);
+            creditsText.innerText = currentCredits + 10;
+            updateProgress();
+            document.getElementById("continue-reading").style.display = "none";
+            document.getElementById("complete-module").style.display = "none";
+        }
+
+        function showModuleInfo(module, description, moreInfo) {
+            let moduleInfo = document.getElementById("module-info");
+            moduleInfo.innerHTML = `<h3>${module}</h3><p>${description}</p><button id='continue-reading' class='btn' onclick='continueReading("${moreInfo}")'>Continue Reading</button>`;
+            moduleInfo.style.display = "block";
+        }
+
+        function continueReading(moreInfo) {
+            let moduleInfo = document.getElementById("module-info");
+            moduleInfo.innerHTML += `<p>${moreInfo}</p><button id='complete-module' class='btn' onclick='completeModule()'>Mark Module as Completed</button>`;
+        }
+    </script>
+</head>
+<body>
+    <div class="header">STUDIFY 🎓</div>
+    
+    <div class="card">
+        <h2>Progress Tracker</h2>
+        <div class="progress">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <p id="progress-text">0% completed</p>
+    </div>
+
+    <div class="card">
+        <h2>Subjects & Modules</h2>
+        <ul>
+            <li class="subject">Physics
+                <ul>
+                    <li><button class="btn" onclick="showModuleInfo('Mechanics', 'Introduction to Mechanics.', 'Mechanics is the study of motion and forces acting on objects. It includes classical mechanics for macroscopic objects and quantum mechanics for tiny particles. Key principles include Newton’s laws, energy conservation, and momentum. Mechanics is crucial in engineering, space exploration, and everyday technology. It helps predict and control motion for practical applications.')">Mechanics</button></li>
+                    <a href="https://www.youtube.com/watch?v=3r7FmnMM26E" class="btn">Go to video</a>
+                    <li><button class="btn" onclick="showModuleInfo('Thermodynamics', 'Study of heat and energy transfer.', 'Thermodynamics is the branch of physics that studies heat, energy, and their transformations. It is based on four fundamental laws that govern energy conservation and transfer. Key concepts include temperature, entropy, and work. Thermodynamics is widely used in engines, refrigerators, and power plants. It helps understand energy efficiency and the behavior of systems in different conditions.')">Thermodynamics</button></li>
+                    <a href="https://www.youtube.com/watch?v=3ksUl-QGIDI" class="btn">Go to video</a>
+                    <li><button class="btn" onclick="showModuleInfo('Electromagnetism', 'Study of electric and magnetic fields.', 'Electromagnetism is the branch of physics that studies electric and magnetic fields and their interactions. It explains how electric charges create electric fields and how moving charges generate magnetic fields. Key concepts include Coulomb’s law, electromagnetic waves, and Maxwell’s equations. Electromagnetism is essential in technologies like motors, generators, and communication systems. It plays a crucial role in everyday applications, from electricity generation to wireless communication.')">Electromagnetism</button></li>
+                    <a href="https://www.youtube.com/watch?v=Elv3WpL32UE" class="btn">Go to video</a>
+                </ul>
+            </li>
+            <li class="subject">Chemistry
+                <ul>
+                    <li><button class="btn" onclick="showModuleInfo('Organic Chemistry', 'Study of carbon compounds.', 'Organic chemistry is the branch of chemistry that studies carbon-containing compounds. It focuses on the structure, properties, reactions, and synthesis of organic molecules. Key compounds include hydrocarbons, alcohols, and biomolecules like proteins and DNA. Organic chemistry is essential in pharmaceuticals, plastics, and agriculture. It plays a vital role in understanding life processes and developing new materials.')">Organic Chemistry</button></li>
+                    <a href="https://www.youtube.com/watch?v=B_ketdzJtY8" class="btn">Go to video</a>
+                    <li><button class="btn" onclick="showModuleInfo('Inorganic Chemistry', 'Study of non-carbon compounds.', 'Inorganic chemistry is the study of chemical compounds that do not contain carbon-hydrogen (C-H) bonds, including metals, minerals, and coordination complexes. It explores the properties, structures, and reactions of elements and their compounds. This field is essential in industries like catalysis, materials science, and medicine. Inorganic chemistry plays a crucial role in developing semiconductors, fertilizers, and bioinorganic processes.')">Inorganic Chemistry</button></li>
+                    <a href="https://www.youtube.com/watch?v=3Zyj4qfvgUE&utm_source=chatgpt.com" class="btn">Go to video</a>
+                    <li><button class="btn" onclick="showModuleInfo('Physical Chemistry', 'Study of chemical systems.', 'Physical chemistry is the branch of chemistry that studies how matter behaves on a molecular and atomic level and how chemical reactions occur. It combines principles of physics and chemistry to understand concepts like thermodynamics, quantum mechanics, and reaction kinetics. This field is essential in developing new materials, pharmaceuticals, and energy solutions. Physical chemistry helps explain the fundamental processes behind chemical reactions and molecular interactions.')">Physical Chemistry</button></li>
+                    <a href="https://www.youtube.com/watch?v=B9DuTNaPm4M" class="btn">Go to video</a>
+                </ul>
+            </li>
+            <li class="subject">Mathematics
+                <ul>
+                    <li><button class="btn" onclick="showModuleInfo('Calculus', 'Study of differentiation and integration.', 'Calculus is the branch of mathematics that studies change and motion. It has two main concepts:  
+
+Differentiation– Focuses on rates of change, slopes of curves, and instantaneous values (e.g., velocity). The derivative measures how a function changes at any given point.  
+Integration – Deals with accumulation, areas under curves, and total values (e.g., distance traveled). The integral calculates the sum of infinitely small quantities')">Calculus</button></li>
+                    <a href="https://www.youtube.com/watch?v=a-FdYsY_h1w" class="btn">Go to video</a>
+                    <li><button class="btn" onclick="showModuleInfo('Algebra', 'Study of mathematical symbols and rules.', 'Algebra is a branch of mathematics that deals with symbols, numbers, and the rules for manipulating them. It involves solving equations, understanding patterns, and working with variables to represent unknown values. Basic algebra includes operations with real numbers, simplifying expressions, solving linear and quadratic equations, and understanding functions and graphs. Key concepts include exponents, polynomials, factoring, and inequalities. Algebra provides a foundation for advanced math and real-world problem-solving in science, engineering, and economics.')">Algebra</button></li>
+                    <a href="https://www.youtube.com/watch?v=NybHckSEQBI" class="btn">Go to video</a>   
+                    <li><button class="btn" onclick="showModuleInfo('Geometry', 'Study of shapes and spaces.', 'Geometry is the branch of mathematics that studies shapes, sizes, angles, and spatial relationships. It includes fundamental concepts such as points, lines, planes, angles, and figures like triangles, circles, and polygons. Key principles involve congruence, similarity, symmetry, and the Pythagorean theorem. In coordinate geometry, algebraic methods are used to analyze geometric properties. Solid geometry extends these ideas to three dimensions, studying spheres, cubes, and other 3D shapes. Geometry is essential in fields like architecture, engineering, and physics.')">Geometry</button></li>
+                    <a href="https://www.youtube.com/watch?v=OgNH3xrhtdg" class="btn">Go to video</a>
+                </ul>
+            </li>
+            <li class="subject">English
+                <ul>
+                    <li><button class="btn" onclick="showModuleInfo('Grammar', 'Study of sentence structure.', 'English grammar is the system that governs the structure of the language, including how words combine to form sentences. It covers parts of speech such as nouns, verbs, adjectives, adverbs, and prepositions, and involves rules for sentence construction like subject-verb agreement, tense consistency, and proper use of punctuation. These rules help clarify meaning and ensure that communication is both effective and precise.')">Grammar</button></li>
+                    <a href="https://www.youtube.com/watch?v=FI2OKNMWGc4" class="btn">Go to video</a>
+                    <li><button class="btn" onclick="showModuleInfo('Literature', 'Study of written works.', 'English literature is the study of written works in the English language, including poetry, drama, fiction, and non-fiction. It explores themes, characters, and historical contexts while analyzing different literary techniques and styles. Key periods include Medieval, Renaissance, Romantic, Victorian, and Modern literature, with notable authors like Shakespeare, Jane Austen, Charles Dickens, and Virginia Woolf. Studying English literature enhances critical thinking, creativity, and an understanding of human experiences across different cultures and time periods.')">Literature</button></li>
+                    <a href="https://www.youtube.com/playlist?list=PL9O1CYNZvYsLRiFRRmU3L-UqjDY2EKjFi" class="btn">Go to video</a>
+                    <li><button class="btn" onclick="showModuleInfo('Writing Skills', 'Study of effective communication.', 'Writing is the process of expressing thoughts, ideas, and information through written words. It involves structure, clarity, and coherence to effectively communicate with readers. The basics include grammar, punctuation, sentence structure, and vocabulary. Writing can take various forms, such as narratives, essays, reports, and creative works, each with its own conventions. Strong writing requires organization, a clear purpose, and revision to refine ideas. Effective writing is essential for communication in education, work, and everyday life.')">Writing Skills</button></li>
+                    <a href="https://www.youtube.com/watch?v=RVrnie4t8BM" class="btn">Go to video</a>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div id="module-info" class="card"></div>
+    
+    <div class="card">
+        <h2>Gamified Rewards</h2>
+        <p>Credits: <span id="credits">0</span></p>
+    </div>
+               
+    </style>
+    <script>
+        function requestMentor(subject) {
+            document.getElementById("mentor-status").innerText = `Mentorship request submitted for ${subject}!`;
+        }
+    </script>
+</head>
+<body>
+    
+    
+    <div class="card">
+        <h2>Request a Mentor</h2>
+        <button class="btn" onclick="requestMentor('English')">Request Mentor for English</button>
+        <button class="btn" onclick="requestMentor('Mathematics')">Request Mentor for Mathematics</button>
+        <button class="btn" onclick="requestMentor('Physics')">Request Mentor for Physics</button>
+        <button class="btn" onclick="requestMentor('Chemistry')">Request Mentor for Chemistry</button>
+        <p id="mentor-status"></p>
+    </div>
+    
+    <div class="card">
+        <h2></h2>
+        
+        <a href="file:///C:/Users/Vishal/OneDrive/Desktop/git/new.html" class="btn">HOME</a>
+        <a href="file:///C:/Users/Vishal/OneDrive/Desktop/git/qu.html" class="btn">QUIZZES</a>
+    </div>
+</body>
+</html>
