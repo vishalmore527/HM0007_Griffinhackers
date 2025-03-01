@@ -1,0 +1,6 @@
+https://github.com/vishalmore527/first_rep.git
+//git hub repository
+git push --set-upstream https://github.com/vishalmore527/first_rep.git master
+git status
+git add new.html
+git commit
