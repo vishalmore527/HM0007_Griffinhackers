@@ -32,5 +32,5 @@ https://lesson7865.w3spaces.com/
 https://drive.google.com/file/d/1oyXJIR0ezj4KK108ZJXY3sRFq5pqTTBN/view?usp=sharing
 
 ##remarks
-when you click on deployed URL their will be a page which says "user created" just scroll down and click continue.
-currently the tracking, and matchmaking functions dosen't work.
+1. when you click on deployed URL their will be a page which says "user created" just scroll down and click continue.
+(2.currently the tracking, and matchmaking functions dosen't work.)
